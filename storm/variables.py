@@ -633,7 +633,7 @@ class JSONVariable(EncodedValueVariable):
         super(JSONVariable, self).__init__(*args, **kwargs)
 
     def _loads(self, value):
-        if not isinstance(value, unicode):
+        if type(value) not in (str, unicode):
             raise TypeError(
                 "Cannot safely assume encoding of byte string %r." % value)
         return json.loads(value)
